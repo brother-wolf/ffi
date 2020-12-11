@@ -1,0 +1,13 @@
+[package]
+name = "ffi-rust"
+version = "0.0.1"
+edition = "2018"
+
+[dependencies]
+
+[lib]
+name = "rust_ffi"
+crate-type = ["dylib"]
+
+[profile.release]
+opt-level = 3
