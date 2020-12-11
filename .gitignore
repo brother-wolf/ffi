@@ -1,4 +1,5 @@
 target/
-/.idea
+.idea/
 Cargo.lock
-*/.ipynb_checkpoints
+.ipynb_checkpoints/
+.DS_Store

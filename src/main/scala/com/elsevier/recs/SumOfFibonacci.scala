@@ -11,7 +11,7 @@ object SumOfFibonacci extends FibonacciSummer {
       }
     }
 
-    val idx = Seq(1, 2)
+    val idx = (1 to (if (input > 1) 2 else input)).toArray
 
     rec(idx, input).sum
   }
@@ -28,8 +28,7 @@ object SumOfFibonacciIndexReferenced extends FibonacciSummer {
         rec(idx :+ newIdx, input)
       }
     }
-
-    val idx = Array(1, 2)
+    val idx = (1 to (if (input > 1) 2 else input)).toArray
 
     rec(idx, input).sum
   }
