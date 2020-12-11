@@ -16,22 +16,21 @@ class ExperimentRunnerSpec extends FlatSpec with Matchers {
    * that will be used for all the experiments
    */
   ignore should "re-generate the static random file of numbers to run" in {
-    val rands = (0 to numCycles).map { _ => (random * 43).toInt + 1 }
+    val rands = (1 to numCycles).map { _ => (random * 43).toInt + 1 }
     writeData(randomDataPath, rands)
   }
 
-  it should "generate rust debug times" in {
-    writeData("./rust-debug-results.csv", process(ScalaRustFFI, readData(randomDataPath)))
-  }
-
-  it should "generate rust release times" in {
-    writeData("./rust-release-results.csv", process(ScalaRustFFI, readData(randomDataPath)))
-  }
   it should "generate scala times" in {
     writeData("./scala-results.csv", process(SumOfFibonacci, readData(randomDataPath)))
   }
+  it should "generate rust debug times" in {
+    writeData("./rust-debug-results.csv", process(ScalaRustFFI, readData(randomDataPath)))
+  }
   it should "generate scala improved times" in {
     writeData("./scala-improved-results.csv", process(SumOfFibonacciIndexReferenced, readData(randomDataPath)))
+  }
+  it should "generate rust release times" in {
+    writeData("./rust-release-results.csv", process(ScalaRustFFI, readData(randomDataPath)))
   }
 
   case class TimerResult(timeTaken: Long, answer: Int)

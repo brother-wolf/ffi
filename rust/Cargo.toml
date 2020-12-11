@@ -10,4 +10,4 @@ name = "rust_ffi"
 crate-type = ["dylib"]
 
 [profile.release]
-opt-level = 3
+opt-level = 1

@@ -49,8 +49,8 @@ fn run_assertions(label: &str, f: extern fn(usize) -> usize) {
         assert_eq!(f(10), 231);
         assert_eq!(f(13), 985);
         assert_eq!(f(43), 1836311901); // Scala's Int limit is around here
-        // assert_eq!(f(50), 53316291171);
-        // assert_eq!(f(90), 12200160415121876736);
+        assert_eq!(f(50), 53316291171);
+        assert_eq!(f(90), 12200160415121876736);
         SystemTime::now().duration_since(start).unwrap().as_micros() as usize
     }).collect::<Vec<usize>>();
     let sum: usize = cycles.iter().sum();
