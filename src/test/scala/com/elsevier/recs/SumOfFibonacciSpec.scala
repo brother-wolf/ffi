@@ -20,7 +20,7 @@ class SumOfFibonacciSpec extends FlatSpec with Matchers {
       val end = System.nanoTime()
       (end - start) / 1000
     }
-    println(s"scala: $cycles")
+    println(s"scala: ${cycles.sum}: $cycles")
   }
 
   it should "calc fibonacci 'index ref'd' sum of numbers" in {
@@ -38,7 +38,7 @@ class SumOfFibonacciSpec extends FlatSpec with Matchers {
       val end = System.nanoTime()
       (end - start) / 1000
     }
-    println(s"scala index ref'd: $cycles")
+    println(s"scala index ref'd: ${cycles.sum}: $cycles")
   }
 
   it should "calc fibonacci sum of numbers in Rust" in {
@@ -56,6 +56,6 @@ class SumOfFibonacciSpec extends FlatSpec with Matchers {
       val end = System.nanoTime()
       (end - start) / 1000
     }
-    println(s"rust via scala: $cycles")
+    println(s"rust via scala: ${cycles.sum}: $cycles")
   }
 }
