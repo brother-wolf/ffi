@@ -7,6 +7,7 @@ class SumOfFibonacciSpec extends FlatSpec with Matchers {
 
   it should "calc fibonacci sum of numbers" in {
     val cycles = (0 to numCycles).map { _ =>
+      System.gc()
       val start = System.nanoTime()
       SumOfFibonacci.sumOfFibonacci(0) should be(0)
       SumOfFibonacci.sumOfFibonacci(1) should be(1)
@@ -24,6 +25,7 @@ class SumOfFibonacciSpec extends FlatSpec with Matchers {
 
   it should "calc fibonacci 'index ref'd' sum of numbers" in {
     val cycles = (0 to numCycles).map { _ =>
+      System.gc()
       val start = System.nanoTime()
       SumOfFibonacciIndexReferenced.sumOfFibonacci(0) should be(0)
       SumOfFibonacciIndexReferenced.sumOfFibonacci(1) should be(1)
@@ -41,6 +43,7 @@ class SumOfFibonacciSpec extends FlatSpec with Matchers {
 
   it should "calc fibonacci sum of numbers in Rust" in {
     val cycles = (0 to numCycles).map { _ =>
+      System.gc()
       val start = System.nanoTime()
       ScalaRustFFI.sumOfFibonacci(0) should be(0)
       ScalaRustFFI.sumOfFibonacci(1) should be(1)
