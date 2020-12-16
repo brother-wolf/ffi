@@ -6,165 +6,44 @@ class SumOfFibonacciSpec extends FlatSpec with Matchers {
   private val numCycles = 200
 
   it should "calc fibonacci sum of numbers" in {
-    val cycles = (0 to numCycles).map { _ =>
-      System.gc()
-      val start = System.nanoTime()
-      SumOfFibonacci.sumOfFibonacci(0) should be(0)
-      SumOfFibonacci.sumOfFibonacci(1) should be(1)
-      SumOfFibonacci.sumOfFibonacci(2) should be(3)
-      SumOfFibonacci.sumOfFibonacci(3) should be(6)
-      SumOfFibonacci.sumOfFibonacci(5) should be(19)
-      SumOfFibonacci.sumOfFibonacci(10) should be(231)
-      SumOfFibonacci.sumOfFibonacci(13) should be(985)
-      SumOfFibonacci.sumOfFibonacci(43) should be(1836311901)
-      val end = System.nanoTime()
-      (end - start) / 1000
+    (1 to 20).foreach { i =>
+      val cycles = (0 to numCycles).map { _ =>
+        System.gc()
+        val start = System.nanoTime()
+        SumOfFibonacci.sumOfFibonacci(0) should be(0)
+        SumOfFibonacci.sumOfFibonacci(1) should be(1)
+        SumOfFibonacci.sumOfFibonacci(2) should be(3)
+        SumOfFibonacci.sumOfFibonacci(3) should be(6)
+        SumOfFibonacci.sumOfFibonacci(5) should be(19)
+        SumOfFibonacci.sumOfFibonacci(10) should be(231)
+        SumOfFibonacci.sumOfFibonacci(13) should be(985)
+        SumOfFibonacci.sumOfFibonacci(43) should be(1836311901)
+        val end = System.nanoTime()
+        (end - start) / 1000
+      }
+      println(s"iteration $i - scala: ${cycles.sum}: $cycles")
     }
-    println(s"scala: ${cycles.sum}: $cycles")
   }
 
   it should "calc fibonacci 'index ref'd' sum of numbers" in {
-    val cycles = (0 to numCycles).map { _ =>
-      System.gc()
-      val start = System.nanoTime()
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(0) should be(0)
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(1) should be(1)
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(2) should be(3)
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(3) should be(6)
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(5) should be(19)
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(10) should be(231)
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(13) should be(985)
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(43) should be(1836311901)
-      val end = System.nanoTime()
-      (end - start) / 1000
+    (1 to 20).foreach { i =>
+      val cycles = (0 to numCycles).map { _ =>
+        System.gc()
+        val start = System.nanoTime()
+        SumOfFibonacciIndexReferenced.sumOfFibonacci(0) should be(0)
+        SumOfFibonacciIndexReferenced.sumOfFibonacci(1) should be(1)
+        SumOfFibonacciIndexReferenced.sumOfFibonacci(2) should be(3)
+        SumOfFibonacciIndexReferenced.sumOfFibonacci(3) should be(6)
+        SumOfFibonacciIndexReferenced.sumOfFibonacci(5) should be(19)
+        SumOfFibonacciIndexReferenced.sumOfFibonacci(10) should be(231)
+        SumOfFibonacciIndexReferenced.sumOfFibonacci(13) should be(985)
+        SumOfFibonacciIndexReferenced.sumOfFibonacci(43) should be(1836311901)
+        val end = System.nanoTime()
+        (end - start) / 1000
+      }
+      println(s"iteration $i - scala index ref'd: ${cycles.sum}: $cycles")
     }
-    println(s"scala index ref'd: ${cycles.sum}: $cycles")
-  }
-
-  it should "calc fibonacci 'index ref'd' @tailrec sum of numbers" in {
-    val cycles = (0 to numCycles).map { _ =>
-      System.gc()
-      val start = System.nanoTime()
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(0) should be(0)
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(1) should be(1)
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(2) should be(3)
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(3) should be(6)
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(5) should be(19)
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(10) should be(231)
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(13) should be(985)
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(43) should be(1836311901)
-      val end = System.nanoTime()
-      (end - start) / 1000
-    }
-    println(s"scala index @tailrec ref'd: ${cycles.sum}: $cycles")
-  }
-
-  it should "calc fibonacci 'index ref'd' sum of numbers again" in {
-    val cycles = (0 to numCycles).map { _ =>
-      System.gc()
-      val start = System.nanoTime()
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(0) should be(0)
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(1) should be(1)
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(2) should be(3)
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(3) should be(6)
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(5) should be(19)
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(10) should be(231)
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(13) should be(985)
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(43) should be(1836311901)
-      val end = System.nanoTime()
-      (end - start) / 1000
-    }
-    println(s"scala index ref'd again: ${cycles.sum}: $cycles")
-  }
-
-  it should "calc fibonacci 'index ref'd' @tailrec sum of numbers again" in {
-    val cycles = (0 to numCycles).map { _ =>
-      System.gc()
-      val start = System.nanoTime()
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(0) should be(0)
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(1) should be(1)
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(2) should be(3)
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(3) should be(6)
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(5) should be(19)
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(10) should be(231)
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(13) should be(985)
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(43) should be(1836311901)
-      val end = System.nanoTime()
-      (end - start) / 1000
-    }
-    println(s"scala index @tailrec ref'd again: ${cycles.sum}: $cycles")
-  }
-
-  it should "calc fibonacci 'index ref'd' sum of numbers again²" in {
-    val cycles = (0 to numCycles).map { _ =>
-      System.gc()
-      val start = System.nanoTime()
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(0) should be(0)
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(1) should be(1)
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(2) should be(3)
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(3) should be(6)
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(5) should be(19)
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(10) should be(231)
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(13) should be(985)
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(43) should be(1836311901)
-      val end = System.nanoTime()
-      (end - start) / 1000
-    }
-    println(s"scala index ref'd again²: ${cycles.sum}: $cycles")
-  }
-
-  it should "calc fibonacci 'index ref'd' @tailrec sum of numbers again²" in {
-    val cycles = (0 to numCycles).map { _ =>
-      System.gc()
-      val start = System.nanoTime()
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(0) should be(0)
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(1) should be(1)
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(2) should be(3)
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(3) should be(6)
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(5) should be(19)
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(10) should be(231)
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(13) should be(985)
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(43) should be(1836311901)
-      val end = System.nanoTime()
-      (end - start) / 1000
-    }
-    println(s"scala index @tailrec ref'd again²: ${cycles.sum}: $cycles")
-  }
-
-  it should "calc fibonacci 'index ref'd' sum of numbers again³" in {
-    val cycles = (0 to numCycles).map { _ =>
-      System.gc()
-      val start = System.nanoTime()
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(0) should be(0)
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(1) should be(1)
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(2) should be(3)
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(3) should be(6)
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(5) should be(19)
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(10) should be(231)
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(13) should be(985)
-      SumOfFibonacciIndexReferenced.sumOfFibonacci(43) should be(1836311901)
-      val end = System.nanoTime()
-      (end - start) / 1000
-    }
-    println(s"scala index ref'd again³: ${cycles.sum}: $cycles")
-  }
-
-  it should "calc fibonacci 'index ref'd' @tailrec sum of numbers again³" in {
-    val cycles = (0 to numCycles).map { _ =>
-      System.gc()
-      val start = System.nanoTime()
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(0) should be(0)
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(1) should be(1)
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(2) should be(3)
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(3) should be(6)
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(5) should be(19)
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(10) should be(231)
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(13) should be(985)
-      SumOfFibonacciIndexReferencedTailRec.sumOfFibonacci(43) should be(1836311901)
-      val end = System.nanoTime()
-      (end - start) / 1000
-    }
-    println(s"scala index @tailrec ref'd again³: ${cycles.sum}: $cycles")
+    println("done")
   }
 
   it should "calc fibonacci sum of numbers in Rust" in {
